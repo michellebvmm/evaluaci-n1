@@ -1,11 +1,30 @@
 .container {
-    padding: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 24px;
   }
-  
-  @media (min-width: 768px) {
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
+
+  .settings-card {
+    max-width: 600px;
   }
-  
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 32px;
+  }
+
+  .settings-card {
+    max-width: 800px;
+  }
+}
