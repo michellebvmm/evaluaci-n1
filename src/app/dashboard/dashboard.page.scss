@@ -1,13 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card {
-    background-color: #76e750;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px 0;
-    text-align: center;
+  background-color: #76e750;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Limita el ancho de la tarjeta en pantallas grandes */
+}
+
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Limita el ancho del contenedor de gráficos */
+}
+
+canvas {
+  width: 100% !important;  /* Asegura que el canvas use el 100% del ancho del contenedor */
+  height: auto !important;  /* Mantiene la proporción de aspecto */
+  margin-bottom: 20px; /* Espaciado entre gráficos */
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 24px;
   }
-  canvas {
-    width: 80% !important;  /* Asegura que el canvas use el 100% del ancho del contenedor */
-    height: auto !important;  /* Mantiene la proporción de aspecto */
+
+  .card {
+    max-width: 600px;
   }
-    
+
+  .charts-container {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 32px;
+  }
+
+  .card {
+    max-width: 800px;
+  }
+
+  .charts-container {
+    max-width: 1200px;
+  }
+}
