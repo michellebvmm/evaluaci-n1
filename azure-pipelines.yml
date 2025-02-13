@@ -1,0 +1,31 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: SonarQubePrepare@7
+  inputs:
+    SonarQube: 'SonarQubeServiceConnection'
+    scannerMode: 'dotnet'
+    projectKey: 'ProjectToDoList'
+
+- script: |
+    echo "Ejecutando pruebas unitarias..."
+    dotnet test
+  displayName: 'Pruebas Unitarias'
+
+- task: SonarQubeAnalyze@7
+  displayName: 'Análisis de Código con SonarQube'
+
+- task: SonarQubePublish@7
+  displayName: 'Publicar Resultados de SonarQube'
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publicar Artefactos'
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'drop'
